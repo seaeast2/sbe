@@ -26,14 +26,13 @@ IRInstruction IRModule::createReturn(const std::string& value) {
 
 // IRBuilder implementation
 void IRBuilder::startFunction(const std::string& name) {
-    currentFunction = new IRFunction(name);
+    currentFunction = std::make_unique<IRFunction>(name);
 }
 
 void IRBuilder::endFunction() {
     if (currentFunction) {
         module.addFunction(*currentFunction);
-        delete currentFunction;
-        currentFunction = nullptr;
+        currentFunction.reset();
     }
 }
 

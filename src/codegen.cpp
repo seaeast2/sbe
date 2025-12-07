@@ -1,5 +1,6 @@
 #include "codegen.h"
 #include <iostream>
+#include <stdexcept>
 
 namespace sbe {
 
@@ -122,8 +123,7 @@ void CodeGenerator::generateInstruction(const IRInstruction& inst) {
 void CodeGenerator::emitPrologue(const IRFunction&) {
     emit("    push rbp");
     emit("    mov rbp, rsp");
-    // Allocate stack space (we'll use a reasonable amount)
-    emit("    sub rsp, 64");
+    emit("    sub rsp, " + std::to_string(STACK_FRAME_SIZE));
 }
 
 void CodeGenerator::emitEpilogue() {
@@ -136,7 +136,8 @@ int CodeGenerator::getStackOffset(const std::string& var) {
     if (it != variableOffsets.end()) {
         return it->second;
     }
-    return 0;
+    // Variable not found - this indicates a bug in IR generation
+    throw std::runtime_error("Variable '" + var + "' not found in stack allocation");
 }
 
 void CodeGenerator::emit(const std::string& line) {

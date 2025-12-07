@@ -27,10 +27,12 @@ private:
     // Helper methods
     void emitPrologue(const IRFunction& func);
     void emitEpilogue();
-    std::string getRegisterForVariable(const std::string& var);
     int getStackOffset(const std::string& var);
     
     void emit(const std::string& line);
+    
+    // Constants
+    static constexpr int STACK_FRAME_SIZE = 64;
 };
 
 } // namespace sbe

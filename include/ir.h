@@ -68,7 +68,7 @@ private:
 // IR Builder - helps construct IR programmatically
 class IRBuilder {
 public:
-    IRBuilder(IRModule& module) : module(module), currentFunction(nullptr) {}
+    IRBuilder(IRModule& module) : module(module) {}
     
     void startFunction(const std::string& name);
     void endFunction();
@@ -82,7 +82,7 @@ public:
     
 private:
     IRModule& module;
-    IRFunction* currentFunction;
+    std::unique_ptr<IRFunction> currentFunction;
 };
 
 } // namespace sbe
