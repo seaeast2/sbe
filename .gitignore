@@ -2,6 +2,28 @@
 build/
 cmake-build-*/
 
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Compiled binaries
+*.exe
+*.out
+*.app
+sbe_example
+sbe_test
+
+# Libraries
+*.a
+*.so
+*.dylib
+
+# Object files
+*.o
+*.obj
+
 # IDE files
 .vscode/
 .idea/
@@ -9,17 +31,9 @@ cmake-build-*/
 *.swo
 *~
 
-# Compiled Object files
-*.o
-*.obj
+# macOS
+.DS_Store
 
-# Executables
-sbe
-*.exe
-*.out
-
-# CMake files (in root directory)
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-Makefile
+# Testing
+CTestTestfile.cmake
+Testing/
