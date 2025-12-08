@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Add the executable
-add_executable(sbe main.cpp)
+add_executable(sbe src/main.cpp)
 
 # Set compiler warnings
 if(MSVC)
