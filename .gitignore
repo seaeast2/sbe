@@ -31,6 +31,10 @@ sbe_test
 *.swo
 *~
 
+# ctags, cscope
+tags
+cscope.out
+
 # macOS
 .DS_Store
 
